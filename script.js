@@ -11,10 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 complete: function (results) {
                     const data = results.data;
                     const df = new dfd.DataFrame(data);
-                    output.innerHTML = `
-                        <h3>DataFrame:</h3>
-                        <pre>${JSON.stringify(df.to_json(), null, 2)}</pre>
-                    `;
+                    displayDataFrame(df);
                 },
                 error: function (error) {
                     console.error('Error parsing file:', error);
@@ -24,4 +21,36 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please upload a file.');
         }
     };
+
+    function displayDataFrame(df) {
+        df.head().print()
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        
+        const headers = df.columns;
+        const headerRow = document.createElement('tr');
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        
+        
+        df.values.forEach(row => {
+            const tr = document.createElement('tr');
+            row.forEach(cell => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        output.innerHTML = ''; 
+        output.appendChild(table);
+    }
 });

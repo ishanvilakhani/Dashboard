@@ -12,17 +12,26 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px; 
-    box-sizing: border-box; 
+    padding: 0 20px; /* Add padding to the left and right for spacing */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
 }
 
-.top-bar .text-left{
+.top-bar .text-left, .top-bar .text-right {
     color: white;
     font-size: 30px;
 }
 
-.top-bar .text-right {
-    color: white;
-    font-size: 20px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
