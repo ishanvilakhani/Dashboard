@@ -11,13 +11,19 @@ body {
     height: 70px; 
     background-color: black;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: space-between; 
     align-items: center; 
     padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* Styling the text within the top bar */
-.top-bar .text {
+.top-bar .text-left {
     color: white;
     font-size: 30px; 
+}
+
+.top-bar .text-right {
+    color: white;
+    font-size: 20px;
 }
