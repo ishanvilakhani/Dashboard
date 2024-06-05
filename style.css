@@ -13,8 +13,6 @@ body {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    padding-left: 30px;
-    padding-right: 30px;
 }
 
 /* Styling the text within the top bar */
@@ -27,3 +25,4 @@ body {
     color: white;
     font-size: 20px;
 }
+
