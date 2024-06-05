@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="top-bar">
@@ -14,8 +14,8 @@
     <div style="padding: 20px;">
         <input type="file" id="fileInput" accept=".csv, .tsv, .txt" />
         <button id="uploadButton">Upload and Create DataFrame</button>
-        <div id="output" class="scrollable-table-container"></div>
+        <div id="output"></div> <!-- Container for displaying output -->
     </div>
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

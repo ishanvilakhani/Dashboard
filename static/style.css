@@ -16,30 +16,12 @@ body {
     box-sizing: border-box;
 }
 
-.top-bar .text-left, .top-bar .text-right {
+.top-bar .text-left {
     color: white;
     font-size: 30px;
 }
 
-.scrollable-table-container {
-    width: 100%;
-    max-height: 300px;
-    overflow: auto;
-    border: 1px solid #000;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
+.top-bar .text-right {
+    color: white;
+    font-size: 20px;
 }
