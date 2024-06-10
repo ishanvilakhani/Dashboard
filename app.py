@@ -2,15 +2,15 @@ from flask import Flask, request, jsonify, render_template
 import pandas as pd
 
 app = Flask(__name__)
-df = None  # Global variable to store the DataFrame
+df = None  # global var to store df
 
-@app.route('/')
+@app.route('/') 
 def index():
-    return render_template('index.html')
+    return render_template('index.html') # start running wtv code index has 
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['POST']) 
 def upload_file():
-    global df  # Reference the global DataFrame variable
+    global df
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'})
     file = request.files['file']
