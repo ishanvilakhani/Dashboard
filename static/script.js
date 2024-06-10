@@ -20,7 +20,25 @@ document.getElementById('uploadButton').addEventListener('click', () => {
             alert(data.error);
         } else {
             const outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = `<p>Rows: ${data.rows}</p><p>Columns: ${data.cols}</p>`;
+            let table = `
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>NaN Counts</th>
+                        <th>Zero Counts</th>
+                    </tr>
+            `;
+            data.columns.forEach(col => {
+                table += `
+                    <tr>
+                        <td>${col}</td>
+                        <td>${data.nan_counts[col]}</td>
+                        <td>${data.zero_counts[col]}</td>
+                    </tr>
+                `;
+            });
+            table += '</table>';
+            outputDiv.innerHTML = table;
         }
     })
     .catch(error => {

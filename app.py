@@ -4,6 +4,8 @@ import pandas as pd
 app = Flask(__name__)
 df = None  # global var to store df
 
+# ------------------------------------- ACCEPTING USER INPUT -----------------------------------------------------
+
 @app.route('/') 
 def index():
     return render_template('index.html') # start running wtv code index has 
@@ -17,10 +19,23 @@ def upload_file():
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
     
+# ------------------------------------- TREATING IT LIKE A DF AND USING IT  -----------------------------------------------------
+
     df = pd.read_csv(file)
     rows, cols = df.shape
-    
-    return jsonify({'rows': rows, 'cols': cols})
+    columns = df.columns.tolist()
+    nan_counts = df.isna().sum().to_dict()
+    zero_counts = (df == 0).sum().to_dict()
 
+# ------------------------------------- RETURN JSONIFY OBJECT FOR SCRIPT.JS  -----------------------------------------------------
+    return jsonify({
+        'rows': rows,
+        'cols': cols,
+        'columns': columns,
+        'nan_counts': nan_counts,
+        'zero_counts': zero_counts
+    })
+
+# --------------
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) # debug mode acitivted 
