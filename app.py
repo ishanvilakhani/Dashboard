@@ -10,6 +10,10 @@ df = None  # global var to store df
 def index():
     return render_template('index.html') # start running wtv code index has 
 
+@app.route('/table')
+def table():
+    return render_template('table.html')
+
 @app.route('/upload', methods=['POST']) 
 def upload_file():
     global df
@@ -38,4 +42,4 @@ def upload_file():
 
 # --------------
 if __name__ == '__main__':
-    app.run(debug=True) # debug mode acitivted 
+    app.run(debug=True) # debug mode acitivted for easier access 

@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: url('{{ url_for('static', filename='image.png') }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
+    <!-- Top bar with navigation links -->
     <div class="top-bar">
         <div class="text-left">YOUR DATA DASHBOARD</div>
-        <div class="text-right">Home Page</div>
+        <div class="text-right">
+            <a href="/">Home Page</a>
+        </div>
     </div>
-    <div style="padding: 20px;">
-        <input type="file" id="fileInput" accept=".csv, .tsv, .txt" />
-        <button id="uploadButton">Start Initial Analysis</button>
-        <div id="output"></div>
+    <!-- Background container to center the button -->
+    <div class="background">
+        <div class="center-container">
+            <button id="navigateButton" class="center-button">Go to Data Table</button>
+        </div>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // JS to navigate to the table page when the button is clicked
+        document.getElementById('navigateButton').addEventListener('click', () => {
+            window.location.href = "/table";
+        });
+    </script>
 </body>
 </html>

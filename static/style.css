@@ -1,8 +1,11 @@
+/* Reset margin and padding for the body, set font-family, and configure height and flex properties */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
-    /* overflow: hidden; Prevent scrolling */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .top-bar {
@@ -25,3 +28,36 @@ body {
     color: white;
     font-size: 20px;
 }
+
+/* Style for the background container to center its content */
+.background {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Center the content inside the container */
+.center-container {
+    text-align: center;
+}
+
+/* Style for the button to make it large and centered */
+.center-button {
+    font-size: 24px;
+    padding: 20px 40px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the button */
+.center-button:hover {
+    background-color: #0056b3;
+}
+

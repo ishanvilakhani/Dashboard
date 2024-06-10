@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="text-left">INTIAL ANALYSIS</div>
+        <div class="text-right">
+            <a href="/">Home Page</a>
+        </div>
+    </div>
+    <div style="padding: 20px;">
+        <input type="file" id="fileInput" accept=".csv, .tsv, .txt" />
+        <button id="uploadButton">Show Rows and Columns</button>
+        <div id="output"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
