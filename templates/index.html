@@ -20,16 +20,66 @@
             <a href="/">Home Page</a>
         </div>
     </div>
-    <!-- Background container to center the button -->
-    <div class="background">
-        <div class="center-container">
-            <button id="navigateButton" class="center-button">START ANALYSIS</button>
-        </div>
+    <!-- File upload container -->
+    <div class="upload-container">
+        <input type="file" id="fileInput" accept=".csv, .tsv, .txt" />
+        <button id="uploadButton" class="home-button">Upload File</button>
     </div>
+    <!-- Button container to center the buttons under the top bar -->
+    <div class="button-container">
+        <button class="home-button" id="initialAnalysisButton">Initial Analysis</button>
+        <button class="home-button" id="cleanDataButton">Clean Data</button>
+        <button class="home-button" id="visualizeDataButton">Visualize Data</button>
+        <button class="home-button" id="predictDataButton">Predict Data</button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script>
-        // JS to navigate to the table page when the button is clicked
-        document.getElementById('navigateButton').addEventListener('click', () => {
-            window.location.href = "/table";
+        let fileUploaded = false;
+
+        document.getElementById('uploadButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select a file first.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert('File uploaded successfully.');
+                    fileUploaded = true;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        function checkFileUploadAndNavigate(url) {
+            if (!fileUploaded) {
+                alert('Please upload a file first.');
+                return;
+            }
+            window.location.href = url;
+        }
+
+        document.getElementById('initialAnalysisButton').addEventListener('click', () => {
+            checkFileUploadAndNavigate("/table");
+        });
+
+        document.getElementById('visualizeDataButton').addEventListener('click', () => {
+            checkFileUploadAndNavigate("/visualize");
         });
     </script>
 </body>

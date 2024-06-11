@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualize Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="text-left">DATA VISUALIZATION</div>
+        <div class="text-right">
+            <a href="/">Home Page</a>
+        </div>
+    </div>
+    <div class="visualization-container">
+        <h2>Correlation Matrix Heatmap</h2>
+        <img src="data:image/png;base64,{{ image_base64 }}" alt="Correlation Matrix Heatmap">
+    </div>
+</body>
+</html>
